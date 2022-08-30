@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,21 @@ Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
 
 // Single Listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+// Show Register Form
+Route::get('/register', [UserController::class, 'create']);
+
+// Create New User
+Route::post('/users', [UserController::class, 'store']);
+
+// Log User Out
+Route::post('/logout', [UserController::class, 'logout']);
+
+// Show Login Form
+Route::get('/login', [UserController::class, 'login']);
+
+// Log In User
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Common Resource Routes:
 // index - Show all Listings
